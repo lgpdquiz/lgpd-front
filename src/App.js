@@ -14,41 +14,11 @@ import {
 } from './reducers/types.js';
 import quizReducer from './reducers/QuizReducer';
 
+import questions from './utils/questions';
+
 import './App.css';
 
 function App() {
-  const questions = [
-    {
-      id: 1,
-      question: 'Which statement about Hooks is not true?',
-      answer_a:
-        'Hooks are 100% backwards-compatible and can be used side by side with classes',
-      answer_b: 'Hooks are still in beta and not available yet',
-      answer_c:
-        "Hooks are completely opt-in, there's no need to rewrite existing code",
-      answer_d: 'All of the above',
-      correct_answer: 'b',
-    },
-    {
-      id: 2,
-      question: 'Which one is not a Hook?',
-      answer_a: 'useState()',
-      answer_b: 'useConst()',
-      answer_c: 'useReducer()',
-      answer_d: 'All of the above',
-      correct_answer: 'b',
-    },
-    {
-      id: 3,
-      question: 'What Hook should be used for data fetching?',
-      answer_a: 'useDataFetching()',
-      answer_b: 'useApi()',
-      answer_c: 'useEffect()',
-      answer_d: 'useRequest()',
-      correct_answer: 'c',
-    },
-  ];
-
   const initialState = {
     questions,
     currentQuestion: 0,
@@ -74,10 +44,10 @@ function App() {
 
   const renderResultMark = (question, answer) => {
     if (question.correct_answer === answer.answer) {
-      return <span className="correct">Correct</span>;
+      return <span className="correct">Acertou</span>;
     }
 
-    return <span className="failed">Failed</span>;
+    return <span className="failed">Errou</span>;
   };
 
   const renderResultsData = () => {
@@ -87,8 +57,10 @@ function App() {
       );
 
       return (
-        <div key={question.id}>
-          {question.question} - {renderResultMark(question, answer)}
+        <div key={question.id} className="results">
+          <span style={{ fontSize: '18px' }}>
+            {question.question} - {renderResultMark(question, answer)}
+          </span>
         </div>
       );
     });
@@ -123,11 +95,11 @@ function App() {
 
   if (showResults) {
     return (
-      <div className="container results">
-        <h2>Results</h2>
+      <div className="container">
+        <h2>Resultado</h2>
         <ul>{renderResultsData()}</ul>
         <button className="btn btn-primary" onClick={restart}>
-          Restart
+          Refazer o teste
         </button>
       </div>
     );
@@ -144,7 +116,7 @@ function App() {
           {renderError()}
           <Answers />
           <button className="btn btn-primary" onClick={next}>
-            Confirm and Continue
+            Confirmar e Continuar
           </button>
         </div>
       </QuizContext.Provider>

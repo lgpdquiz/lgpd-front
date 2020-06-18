@@ -6,7 +6,7 @@ import QuizContext from '../context/QuizContext';
 export const QuestionTitle = styled.span`
   color: #fff;
   font-size: 26px;
-  max-width: 400px;
+  max-width: 600px;
   max-height: 120px;
   text-align: center;
   margin-top: 3rem;
