@@ -30,7 +30,7 @@ const QuestionsProgress = styled.span`
 function Progress(props) {
   return (
     <Wrapper>
-      <h2 style={{ fontSize: '32px', fontWeight: 'regular' }}>Question</h2>
+      <h2 style={{ fontSize: '32px', fontWeight: 'regular' }}>Questão</h2>
       <QuestionsProgress>
         {props.current}/{props.total}
       </QuestionsProgress>
